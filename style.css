@@ -3,11 +3,17 @@ body {
     height: 100vh;
 }
 
+#welcomelogo {
+    width: 100px;
+    height: auto;
+}
+
 #bar {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
+    justify-content: space-between;
     display: flex;
     background-color: #d9d9d9;
 }
