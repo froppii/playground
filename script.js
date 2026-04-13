@@ -128,11 +128,13 @@ function dragElement(elmnt) {
 
         const newTop = elmnt.offsetTop - pos2;
         const newLeft = elmnt.offsetLeft - pos1;
-        const maxTop = window.innerHeight - elmnt.offsetHeight;
-        const maxLeft = window.innerWidth - elmnt.offsetWidth;
+        const minTop = -(elmnt.offsetHeight - 40);
+        const maxTop = window.innerHeight - 40;
+        const minLeft = -(elmnt.offsetWidth - 40);
+        const maxLeft = window.innerWidth - 40;
 
-        elmnt.style.top = Math.min(Math.max(newTop, 0), Math.max(maxTop, 0)) + "px";
-        elmnt.style.left = Math.min(Math.max(newLeft, 0), Math.max(maxLeft, 0)) + "px";
+        elmnt.style.top = Math.min(Math.max(newTop, minTop), maxTop) + "px";
+        elmnt.style.left = Math.min(Math.max(newLeft, minLeft), maxLeft) + "px";
     }
 
     function closeDragElement() {
