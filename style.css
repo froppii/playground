@@ -26,9 +26,8 @@ body {
 }
 
 #welcome {
-    top: 60%;
-    left: 80%;
-    transform: translate(-50%, -50%);
+    top: 120px;
+    left: 120px;
     text-align: center;
     --window-max-height: 400px;
 }
