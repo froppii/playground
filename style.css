@@ -25,6 +25,53 @@ body {
     pointer-events: none;
 }
 
+#desktop-pet {
+    position: fixed;
+    width: 150px;
+    height: auto;
+    left: 120px;
+    bottom: -9px;
+    z-index: 15;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+#desktop-pet.walking {
+    animation: pet-walk 6s ease-in-out infinite alternate;
+}
+
+#desktop-pet.stopped {
+    animation: none !important;
+}
+
+#desktop-pet.pet-dragging,
+#desktop-pet-static.pet-dragging {
+    cursor: grabbing;
+    animation: none !important;
+    animation-play-state: paused;
+}
+
+#desktop-pet-static {
+    position: fixed;
+    width: 150px;
+    height: auto;
+    z-index: 15;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    display: none;
+}
+
+@keyframes pet-walk {
+    from {
+        transform: translateX(-20px);
+    }
+    to {
+        transform: translateX(20px);
+    }
+}
+
 #welcome {
     top: 30%;
     left: 60%;
