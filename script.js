@@ -1,3 +1,90 @@
+const apps = [
+    {
+        title: "welcome.txt",
+        icon: "iconplaceholder.png",
+        content: `
+            <p>testing</p>
+        `
+    },
+    {
+        title: "guide.txt",
+        icon: "iconplaceholder.png",
+        content: `
+            <p>testing</p>
+        `
+    },
+    {
+        title: "ship.exe",
+        icon: "iconplaceholder.png",
+        content: `
+            <form action="https://example.com" method="get">
+                <input type="checkbox" id="age" name="age">
+                <label for="age">i am 18 years old or under</label><br>
+                <input type="checkbox" id="submission" name="submission">
+                <label for="submission">project has not been submitted to any other ysws</label><br>
+                <button type="submit">submit</button>
+            </form>
+        `
+    }
+];
+
+const appsContainer = document.getElementById("apps");
+
+apps.forEach(app => {
+    const div = document.createElement("div");
+    div.className = "app";
+    div.innerHTML = `
+        <img class="appicon" src="${app.icon}" alt="${app.title}">
+        <p>${app.title}</p>
+    `;
+    div.addEventListener("dblclick", () => openWindow(app));
+    appsContainer.appendChild(div);
+});
+
+const guideLink = document.getElementById("guide-link");
+if (guideLink) {
+    guideLink.addEventListener("click", event => {
+        event.preventDefault();
+        openWindowByTitle("guide.txt");
+    });
+}
+
+function openWindowByTitle(title) {
+    const app = apps.find(app => app.title.toLowerCase() === title.toLowerCase());
+    if (!app) {
+        console.warn(`App not found: ${title}`);
+        return;
+    }
+    openWindow(app);
+}
+
+function openWindow(app) {
+    const id = 'window-' + app.title.replace(/\s+/g, '-');
+
+    if (document.getElementById(id)) {
+        document.getElementById(id).style.display = 'flex';
+        return;
+    }
+
+    const win = document.createElement('div');
+    win.className = 'window';
+    win.id = id;
+    win.style.top = '80px';
+    win.style.left = '80px';
+
+    win.innerHTML = `
+        <div class="windowheader" id="${id}header">
+            <h1 class="headertext">${app.title}</h1>
+        </div>
+        <div class="windowcontent">
+            ${app.content}
+        </div>
+    `;
+
+    document.body.appendChild(win);
+    dragElement(win);
+}
+
 dragElement(document.getElementById("welcome"));
 
 function dragElement(elmnt) {
