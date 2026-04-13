@@ -38,6 +38,9 @@ apps.forEach(app => {
         <p>${app.title}</p>
     `;
     div.addEventListener("dblclick", () => openWindow(app));
+    if (app.title.toLowerCase() === "welcome.txt") {
+        div.addEventListener("click", () => openWindow(app));
+    }
     appsContainer.appendChild(div);
 });
 
@@ -58,7 +61,18 @@ function openWindowByTitle(title) {
     openWindow(app);
 }
 
+function showWelcomeWindow() {
+    const welcome = document.getElementById('welcome');
+    if (!welcome) return;
+    welcome.style.display = 'flex';
+}
+
 function openWindow(app) {
+    if (app.title.toLowerCase() === 'welcome.txt') {
+        showWelcomeWindow();
+        return;
+    }
+
     const id = 'window-' + app.title.replace(/\s+/g, '-');
 
     if (document.getElementById(id)) {
