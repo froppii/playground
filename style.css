@@ -26,8 +26,8 @@ body {
 }
 
 #welcome {
-    top: 120px;
-    left: 120px;
+    top: 30%;
+    left: 60%;
     text-align: center;
     --window-max-height: 400px;
 }
