@@ -125,8 +125,14 @@ function dragElement(elmnt) {
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+        const newTop = elmnt.offsetTop - pos2;
+        const newLeft = elmnt.offsetLeft - pos1;
+        const maxTop = window.innerHeight - elmnt.offsetHeight;
+        const maxLeft = window.innerWidth - elmnt.offsetWidth;
+
+        elmnt.style.top = Math.min(Math.max(newTop, 0), Math.max(maxTop, 0)) + "px";
+        elmnt.style.left = Math.min(Math.max(newLeft, 0), Math.max(maxLeft, 0)) + "px";
     }
 
     function closeDragElement() {
