@@ -1,10 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+
 body {
     margin: 0;
     height: 100vh;
+    font-family: 'Chelsea Market';
+}
+
+#welcome {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.window {
+    position: absolute;
+    width: 464px;
+    min-width: 464px;
+    border: 4px solid #3a70b8;
+    background: #3a70b8;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 9;
+    box-sizing: border-box;
+}
+
+.windowheader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    z-index: 10;
+    background: #3a70b8;
+    height: 20px;
+}
+
+.headertext {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+    padding: 0 4px;
+}
+
+.windowcontent {
+    padding: 24px 24px 20px;
+    background: white;
+    color: #2b3a4d;
+    border-top: 2px solid #3a70b8;
+}
+
+.windowcontent img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 18px;
+}
+
+.windowcontent p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.windowcontent ul {
+    margin: 18px 0 0;
+    padding-left: 20px;
 }
 
 #welcomelogo {
-    width: 100px;
+    width: 400px;
     height: auto;
 }
 
@@ -15,5 +79,7 @@ body {
     bottom: 0;
     justify-content: space-between;
     display: flex;
+    align-items: center;
+    height: 40px;
     background-color: #d9d9d9;
 }
